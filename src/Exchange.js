@@ -1,7 +1,7 @@
 import React from 'react';
 
 class Exchange extends React.Component {
-  constructor(props) {
+constructor(props) {
     super(props);
   }
 
@@ -11,9 +11,10 @@ class Exchange extends React.Component {
       <div className="row justify-content-center">
         <div className="col-10">
           <h1 className="text-primary text-center mt-4  mb-4">Exchange Rates</h1>
-          <select className="bg-primary text-white rounded p-1 mb-2">
+          <select className="bg-secondary text-white rounded p-1 mb-2">
             <option value="USD">USD US Dollar</option>
             <option value="EUR">EUR Euro</option>
+            <option value="JPY">JPY Japanese Yen</option>
           </select>
           <table className="table table-striped table-hover table-bordered">
             <thead>
@@ -38,13 +39,7 @@ class Exchange extends React.Component {
                 <td></td>
               </tr>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
+                <td>JPY</td>
                 <td></td>
                 <td></td>
                 <td></td>

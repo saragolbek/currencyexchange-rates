@@ -2,6 +2,14 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { json, checkStatus } from './utils';
 
+const switchValues = () => {
+  var second=document.getElementById("drop2");
+	var first=document.getElementById("drop1");
+	var temp;
+	temp=second.value;
+	second.value=first.value;
+	first.value=temp;
+};
 class CurrencyConverter extends React.Component {
   constructor(props) {
     super(props);
@@ -59,14 +67,16 @@ class CurrencyConverter extends React.Component {
               <span class="input-group-text">$</span>
               <input type="number" className="form-control mr-sm-2" placeholder="1.00" value={searchTerm} onChange={this.handleChange}/>
               <span class="input-group-text">.00</span>
-              <select class="form-select">
+              <select class="form-select" id="drop1">
                 <option value="USD">USD US Dollar</option>
                 <option value="EUR">EUR Euro</option>
+                <option value="JPY">JPY Japanese Yen</option>
               </select>
-              <button class="btn btn-outline-secondary" type="button">&#8646;</button>
-              <select class="form-select">
+              <button class="btn btn-outline-secondary" type="button" onClick={switchValues}>&#8646;</button>
+              <select class="form-select" id="drop2">
                 <option value="EUR">EUR Euro</option>
                 <option value="USD">USD US Dollar</option>
+                <option value="JPY">JPY Japanese Yen</option>
                </select>
               </div>
             </form>
@@ -84,5 +94,7 @@ class CurrencyConverter extends React.Component {
     )
   }
 }
+
+
 
 export default CurrencyConverter;
