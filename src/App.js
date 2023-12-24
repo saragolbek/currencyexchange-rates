@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Home from './Home';
 import Exchange from './Exchange';
-
 import './App.css';
 
 const NotFound = () => {
