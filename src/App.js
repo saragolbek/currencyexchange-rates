@@ -23,6 +23,13 @@ const App = () => {
         <Route path="/Exchange/:id" component={Exchange} />
         <Route component={NotFound} />
       </Switch>
+      <div className="container py-3">
+      </div>
+      <footer className="mt-5">
+      <div class="container-fluid p-3 bg-light mt-5">
+          <p class="navbar-text me-auto">Created by: <a href="https://saragolbekportfolio.netlify.app/">Sara Golbek</a></p>
+        </div>
+      </footer>
     </Router>
   );
 }
