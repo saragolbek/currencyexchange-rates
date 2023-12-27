@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import Chart from 'chart.js/auto';
+import {Line} from 'react-chartjs-2';
 import { json, checkStatus } from './utils';
 
 
@@ -15,8 +17,9 @@ class CurrencyConverter extends React.Component {
     };
     this.currencyChange = this.currencyChange.bind(this);
     this.switchValues = this.switchValues.bind(this);
+    this.chartRef = React.createRef();
   }
-
+  
   switchValues(event) {
     var second=document.getElementById("drop2");
     var first=document.getElementById("drop1");
@@ -39,11 +42,14 @@ class CurrencyConverter extends React.Component {
         }
 
         if (data.amount && data.rates) {
+          const data1 = drop1.value;
+          const data2 = drop2.value;
           result = data.rates[drop2.value] * amount.value;
           document.getElementById("present").innerHTML = '<h3><span id="one"></span> &rarr; <span id="two"></span></h3><p>&#61; <span id="converted"></span></P>';
           document.getElementById("one").innerHTML =  drop1.value;
           document.getElementById("two").innerHTML =  drop2.value;
           document.getElementById("converted").innerHTML =  result;
+          this.getHistoricalRates(data1, data2);
         }
       })
       .catch((error) => {
@@ -51,6 +57,48 @@ class CurrencyConverter extends React.Component {
         console.log(error);
       })
   }
+  
+  getHistoricalRates = (base, quote) => {
+    const endDate = new Date().toISOString().split('T')[0];
+    const startDate = new Date((new Date).getTime() - (30 * 24 * 60 * 60 * 1000)).toISOString().split('T')[0];
+    fetch(`https://api.frankfurter.app/${startDate}..${endDate}?from=${drop1.value}&to=${drop2.value}`)
+      .then(checkStatus)
+      .then(json)
+      .then(data => {
+        if (data.error) {
+          throw new Error(data.error);
+        }
+        const chartLabels = Object.keys(data.rates);
+        const chartData = Object.values(data.rates).map(rate => rate[quote]);
+        const chartLabel = `${base}/${quote}`;
+        this.buildChart(chartLabels, chartData, chartLabel);
+      })
+      .catch(error => console.error(error.message));
+  }
+  buildChart = (labels, data, label) => {
+    const chartRef = this.chartRef.current.getContext("2d");
+    if (typeof this.chart !== "undefined") {
+      this.chart.destroy();
+    }
+    this.chart = new Chart(this.chartRef.current.getContext("2d"), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: label,
+            data,
+            fill: false,
+            tension: 0,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+      }
+    })
+  }
+  //...
 
   render() {
     const { results, error } = this.state;
@@ -81,6 +129,7 @@ class CurrencyConverter extends React.Component {
               <div id="present" class="text-primary">
               </div>
             </form>
+            <canvas ref={this.chartRef} />
           </div>
         </div>
       </div>

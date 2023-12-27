@@ -35,7 +35,10 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/react", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:13.4.0"],\
           ["@testing-library/user-event", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:13.5.0"],\
           ["bootstrap", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:5.3.2"],\
+          ["chart.js", "npm:4.4.1"],\
           ["react", "npm:18.2.0"],\
+          ["react-chartjs", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:1.2.0"],\
+          ["react-chartjs-2", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:5.2.0"],\
           ["react-dom", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:18.2.0"],\
           ["react-router-dom", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:5.3.4"],\
           ["react-scripts", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:5.0.1"],\
@@ -4068,6 +4071,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@kurkle/color", [\
+      ["npm:0.3.2", {\
+        "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/@kurkle-color-npm-0.3.2-98f2086013-10c0.zip/node_modules/@kurkle/color/",\
+        "packageDependencies": [\
+          ["@kurkle/color", "npm:0.3.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@leichtgewicht/ip-codec", [\
       ["npm:2.0.4", {\
         "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/@leichtgewicht-ip-codec-npm-2.0.4-dd4d657af8-10c0.zip/node_modules/@leichtgewicht/ip-codec/",\
@@ -6855,6 +6867,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["chart.js", [\
+      ["npm:4.4.1", {\
+        "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/chart.js-npm-4.4.1-bea8f3ff67-10c0.zip/node_modules/chart.js/",\
+        "packageDependencies": [\
+          ["chart.js", "npm:4.4.1"],\
+          ["@kurkle/color", "npm:0.3.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["check-types", [\
       ["npm:11.2.3", {\
         "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/check-types-npm-11.2.3-ec5ac75c40-10c0.zip/node_modules/check-types/",\
@@ -7262,6 +7284,17 @@ const RAW_RUNTIME_STATE =
           ["parse-json", "npm:5.2.0"],\
           ["path-type", "npm:4.0.0"],\
           ["yaml", "npm:1.10.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["create-react-class", [\
+      ["npm:15.7.0", {\
+        "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/create-react-class-npm-15.7.0-667818a95c-10c0.zip/node_modules/create-react-class/",\
+        "packageDependencies": [\
+          ["create-react-class", "npm:15.7.0"],\
+          ["loose-envify", "npm:1.4.0"],\
+          ["object-assign", "npm:4.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -9086,7 +9119,10 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/react", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:13.4.0"],\
           ["@testing-library/user-event", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:13.5.0"],\
           ["bootstrap", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:5.3.2"],\
+          ["chart.js", "npm:4.4.1"],\
           ["react", "npm:18.2.0"],\
+          ["react-chartjs", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:1.2.0"],\
+          ["react-chartjs-2", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:5.2.0"],\
           ["react-dom", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:18.2.0"],\
           ["react-router-dom", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:5.3.4"],\
           ["react-scripts", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:5.0.1"],\
@@ -15202,6 +15238,63 @@ const RAW_RUNTIME_STATE =
           ["raf", "npm:3.4.1"],\
           ["regenerator-runtime", "npm:0.13.11"],\
           ["whatwg-fetch", "npm:3.6.20"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-chartjs", [\
+      ["npm:1.2.0", {\
+        "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/react-chartjs-npm-1.2.0-68ec5b8582-10c0.zip/node_modules/react-chartjs/",\
+        "packageDependencies": [\
+          ["react-chartjs", "npm:1.2.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:1.2.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-chartjs-virtual-061d376299/6/AppData/Local/Yarn/Berry/cache/react-chartjs-npm-1.2.0-68ec5b8582-10c0.zip/node_modules/react-chartjs/",\
+        "packageDependencies": [\
+          ["react-chartjs", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:1.2.0"],\
+          ["@types/chart.js", null],\
+          ["@types/react", null],\
+          ["@types/react-dom", null],\
+          ["chart.js", "npm:4.4.1"],\
+          ["create-react-class", "npm:15.7.0"],\
+          ["react", "npm:18.2.0"],\
+          ["react-dom", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/chart.js",\
+          "@types/react-dom",\
+          "@types/react",\
+          "chart.js",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-chartjs-2", [\
+      ["npm:5.2.0", {\
+        "packageLocation": "../../../../../AppData/Local/Yarn/Berry/cache/react-chartjs-2-npm-5.2.0-03632f5179-10c0.zip/node_modules/react-chartjs-2/",\
+        "packageDependencies": [\
+          ["react-chartjs-2", "npm:5.2.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:5.2.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-chartjs-2-virtual-ad3bc7ce67/6/AppData/Local/Yarn/Berry/cache/react-chartjs-2-npm-5.2.0-03632f5179-10c0.zip/node_modules/react-chartjs-2/",\
+        "packageDependencies": [\
+          ["react-chartjs-2", "virtual:175c85d43c2e35ed4409f89a94b56079fe6d466952588dcff5ad324604934411ed3ed11c057fda5e3f50be52412839889cca8450bff969256ca53bcc0338b598#npm:5.2.0"],\
+          ["@types/chart.js", null],\
+          ["@types/react", null],\
+          ["chart.js", "npm:4.4.1"],\
+          ["react", "npm:18.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/chart.js",\
+          "@types/react",\
+          "chart.js",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\

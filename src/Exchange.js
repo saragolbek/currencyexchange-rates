@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import Chart from 'chart.js/auto';
+import { Line } from 'react-chartjs-2';
 import { json, checkStatus } from './utils';
+
 
 var result;
 class Exchange extends React.Component {
@@ -12,6 +15,7 @@ class Exchange extends React.Component {
       error: '',
     };
     this.currencyChange = this.currencyChange.bind(this);
+    this.chartRef = React.createRef();
   }
 
   currencyChange(event) {
@@ -20,15 +24,22 @@ class Exchange extends React.Component {
       .then(checkStatus)
       .then(json)
       .then((data) => {
-        console.log(data);
         if (data.Response === 'False') {
           throw new Error(data.Error);
         }
 
         if (data.amount && data.rates) {
-          document.getElementById("uRate").innerHTML = data.rates.USD || 1;
-          document.getElementById("eRate").innerHTML = data.rates.EUR || 1;
-          document.getElementById("jRate").innerHTML = data.rates.JPY || 1;
+          const uData = data.rates.USD || 1;
+          const eData = data.rates.EUR || 1;
+          const jData = data.rates.JPY || 1;
+          const chartLabels = ["USD", "EUR", "JPY"];
+          const chartData = [uData, eData, jData];
+          const chartLabel = `Exchange Rates`;
+          document.getElementById("uRate").innerHTML = uData;
+          document.getElementById("eRate").innerHTML = eData;
+          document.getElementById("jRate").innerHTML = jData;
+          console.log(chartData);
+          this.buildChart(chartLabels, chartData, chartLabel);
         }
       })
       .catch((error) => {
@@ -36,11 +47,35 @@ class Exchange extends React.Component {
         console.log(error);
       })
   }
-
+  
+  buildChart = (labels, data, label) => {
+    const chartRef = this.chartRef.current.getContext("2d");
+    if (typeof this.chart !== "undefined") {
+      this.chart.destroy();
+    }
+    this.chart = new Chart(this.chartRef.current.getContext("2d"), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [
+          {
+            label,
+            data,
+            fill: false,
+            tension: 0,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+      }
+    })
+  }
+ 
   render() {
     const { results, error } = this.state;
     return (
-      <div className="container shadow mt-5">
+      <div className="container shadow mt-5 pb-5">
       <div className="row justify-content-center">
         <div className="col-10">
           <h1 className="text-primary text-center mt-4  mb-4">Exchange Rates</h1>
@@ -54,33 +89,29 @@ class Exchange extends React.Component {
               <tr>
                 <th>Currency</th>
                 <th>Rate</th>
-                <th>Chart</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>USD</td>
                 <td id="uRate"></td>
-                <td></td>
               </tr>
               <tr>
                 <td>EUR</td>
                 <td id="eRate"></td>
-                <td></td>
               </tr>
               <tr>
                 <td>JPY</td>
                 <td id="jRate"></td>
-                <td></td>
               </tr>
             </tbody>
           </table>
+          <canvas ref={this.chartRef} />
         </div>
       </div>
     </div>
     )
   }
 }
-
 
 export default Exchange;
