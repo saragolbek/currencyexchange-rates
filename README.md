@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Currency Exchange App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img width="1435" alt="Screenshot 2025-01-07 at 7 08 40 PM" src="https://github.com/user-attachments/assets/fb356580-486a-4a93-bead-06137d5a55b5" />
+<img width="1440" alt="Screenshot 2025-01-07 at 7 08 56 PM" src="https://github.com/user-attachments/assets/7f23b8a1-1a1b-444a-b4ab-a409d70770ca" />
 
-## Available Scripts
 
-In the project directory, you can run:
+## Website
+[https://currency-converter-sg.netlify.app/](url)
 
-### `yarn start`
+## Overview
+The Currency Exchange App is a dynamic two-page web application that provides real-time currency conversion and historical exchange rate trends. Users can select currencies to view current exchange rates, compare them in a table, and analyze historical data through interactive graphs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
+1. Real-Time Exchange Rates:
+  - Compare two currencies and view the current exchange rate on the first page.
+  - Visualize historical exchange rate trends with a dynamic graph.
+2. Comprehensive Currency Comparison:
+  - Select one currency to compare against all available currencies on the second page.
+  - View data in a tabular format alongside a comparative graph.
+3. User-Friendly Interface:
+  - Intuitive navigation with a clean and responsive design for desktop and mobile users.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
+- Front-end: HTML, CSS, React JSX, Javascript
+- Back-end: Frankenfurter API
 
-### `yarn test`
+## General Approach
+1. Front-End Development:
+  - Designed a responsive layout using HTML and CSS for an engaging user experience.
+  - Built interactive components in React JS to handle data presentation and user interaction.
+2. API Integration:
+  - Leveraged the Frankfurter API to fetch real-time and historical exchange rate data.
+  - Implemented API calls and mapped the retrieved data to graphs and tables for clear visualization.
+3. Page Development:
+  - Page 1: Users select two currencies to view current exchange rates and a graph of historical trends.
+  - Page 2: Allows users to select one currency to compare its value against all available currencies, displayed in a table and graph format.
+4. Testing and Debugging:
+  - Verified API responses and ensured accurate mapping of data into the application.
+  - Debugged and refined user interface components for seamless interaction.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Further Enhancements
+1. Expanded Currency Support: Currently limited to three currencies; future updates will include additional currencies for broader comparison.
+2. Improved User Analytics: Adding features to track user preferences and provide tailored currency insights.
+3. Enhanced Graphs: Explore advanced visualization libraries for more detailed and customizable graphs.
