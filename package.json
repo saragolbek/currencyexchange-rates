@@ -1,5 +1,5 @@
 {
-  "name": "exchange-app",
+  "name": "currencyexchange-rates",
   "version": "0.1.0",
   "private": true,
   "engines": {
