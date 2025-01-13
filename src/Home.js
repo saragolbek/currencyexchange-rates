@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ChartComponent from './ChartComponent';
 
-class CurrencyConverter extends React.Component {
+class CurrencyConverter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currencies: [], // List of all currencies
+            currencies: [],
             baseCurrency: 'USD',
             targetCurrency: 'EUR',
             amount: 1,
@@ -19,42 +19,41 @@ class CurrencyConverter extends React.Component {
         this.fetchCurrencies();
     }
 
-    fetchCurrencies = () => {
-        fetch('https://api.frankfurter.app/currencies')
-            .then((response) => response.json())
-            .then((data) => {
-                const currencies = Object.keys(data);
-                this.setState({ currencies, error: null });
-            })
-            .catch((error) => {
-                this.setState({ error: error.message });
-            });
+    fetchCurrencies = async () => {
+        try {
+            const response = await fetch('https://api.frankfurter.app/currencies');
+            const data = await response.json();
+            this.setState({ currencies: Object.keys(data), error: null });
+        } catch (error) {
+            this.setState({ error: error.message });
+        }
     };
 
-    handleConversion = () => {
-        const { baseCurrency, targetCurrency} = this.state;
-        fetch(`https://api.frankfurter.app/latest?from=${baseCurrency}&to=${targetCurrency}`)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({ convertedAmount: data.rates[targetCurrency], error: null });
-                this.fetchHistoricalRates(baseCurrency, targetCurrency);
-            })
-            .catch((error) => {
-                this.setState({ error: error.message });
+    handleConversion = async () => {
+        const { baseCurrency, targetCurrency, amount } = this.state;
+        try {
+            const response = await fetch(`https://api.frankfurter.app/latest?from=${baseCurrency}&to=${targetCurrency}`);
+            const data = await response.json();
+            this.setState({
+                convertedAmount: data.rates[targetCurrency] * amount,
+                error: null
             });
+            this.fetchHistoricalRates(baseCurrency, targetCurrency);
+        } catch (error) {
+            this.setState({ error: error.message });
+        }
     };
 
-    fetchHistoricalRates = (base, target) => {
+    fetchHistoricalRates = async (base, target) => {
         const endDate = new Date().toISOString().split('T')[0];
         const startDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-        fetch(`https://api.frankfurter.app/${startDate}..${endDate}?from=${base}&to=${target}`)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({ historicalRates: data.rates, error: null });
-            })
-            .catch((error) => {
-                this.setState({ error: error.message });
-            });
+        try {
+            const response = await fetch(`https://api.frankfurter.app/${startDate}..${endDate}?from=${base}&to=${target}`);
+            const data = await response.json();
+            this.setState({ historicalRates: data.rates, error: null });
+        } catch (error) {
+            this.setState({ error: error.message });
+        }
     };
 
     render() {
@@ -102,7 +101,7 @@ class CurrencyConverter extends React.Component {
                 {error && <p className="text-danger">{error}</p>}
                 {convertedAmount && (
                     <p className="text-success">
-                        {amount} {baseCurrency} = {convertedAmount} {targetCurrency}
+                        {amount} {baseCurrency} = {convertedAmount.toFixed(2)} {targetCurrency}
                     </p>
                 )}
                 <ChartComponent

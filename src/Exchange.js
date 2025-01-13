@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ChartComponent from './ChartComponent';
 
-class Exchange extends React.Component {
+class Exchange extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,27 +17,24 @@ class Exchange extends React.Component {
     this.fetchExchangeRates(this.state.baseCurrency);
   }
 
-  fetchCurrencies = () => {
-    fetch('https://api.frankfurter.app/currencies')
-        .then((response) => response.json())
-        .then((data) => {
-          const currencies = Object.keys(data);
-          this.setState({ currencies, error: null });
-        })
-        .catch((error) => {
-          this.setState({ error: error.message });
-        });
+  fetchCurrencies = async () => {
+    try {
+      const response = await fetch('https://api.frankfurter.app/currencies');
+      const data = await response.json();
+      this.setState({ currencies: Object.keys(data), error: null });
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   };
 
-  fetchExchangeRates = (currency) => {
-    fetch(`https://api.frankfurter.app/latest?from=${currency}`)
-        .then((response) => response.json())
-        .then((data) => {
-          this.setState({ rates: data.rates, error: null });
-        })
-        .catch((error) => {
-          this.setState({ error: error.message });
-        });
+  fetchExchangeRates = async (currency) => {
+    try {
+      const response = await fetch(`https://api.frankfurter.app/latest?from=${currency}`);
+      const data = await response.json();
+      this.setState({ rates: data.rates, error: null });
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   };
 
   handleCurrencyChange = (event) => {
