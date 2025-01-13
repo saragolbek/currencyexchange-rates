@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from './Home';
 import Exchange from './Exchange';
 import './App.css';
@@ -14,8 +14,12 @@ const App = () => {
             <nav className="navbar sticky-top navbar-dark bg-primary">
                 <div className="container-fluid justify-content-end">
                     <span className="navbar-text me-auto">Smart Exchange</span>
-                    <a className="nav-link p-1 rounded hover link-light me-4" href="/">Currency Converter</a>
-                    <a className="nav-link p-1 rounded hover link-light me-4" href="/Exchange/1">Exchange Rates</a>
+                    <Link to="/" className="nav-link p-1 rounded hover link-light me-4">
+                        Currency Converter
+                    </Link>
+                    <Link to="/Exchange/1" className="nav-link p-1 rounded hover link-light me-4">
+                        Exchange Rates
+                    </Link>
                 </div>
             </nav>
             <Routes>
