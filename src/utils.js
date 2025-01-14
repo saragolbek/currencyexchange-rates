@@ -1,9 +1,18 @@
-export const checkStatus = (response) => {
-  if (response.ok) {
-    // .ok returns true if response status is 200-299
-    return response;
-  }
-  throw new Error('Request was either a 404 or 500');
-}
+// Fetch and cache currencies
+export const fetchCurrencies = async () => {
+  const cacheKey = 'currencies_cache';
+  let cachedCurrencies = localStorage.getItem(cacheKey);
 
-export const json = (response) => response.json()
+  if (cachedCurrencies) {
+    return Object.keys(JSON.parse(cachedCurrencies));
+  }
+
+  try {
+    const response = await fetch('https://api.frankfurter.dev/v1/currencies');
+    const data = await response.json();
+    localStorage.setItem(cacheKey, JSON.stringify(data)); // Cache the data
+    return Object.keys(data);
+  } catch (error) {
+    throw new Error(`Failed to fetch currencies: ${error.message}`);
+  }
+};
