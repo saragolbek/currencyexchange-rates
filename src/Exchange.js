@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { fetchCurrencies } from './utils';
 import ChartComponent from './ChartComponent';
 
 class Exchange extends Component {
@@ -13,34 +14,25 @@ class Exchange extends Component {
   }
 
   componentDidMount() {
-    this.fetchCurrencies();
-    this.fetchExchangeRates(this.state.baseCurrency);
+    fetchCurrencies()
+        .then((currencies) => this.setState({ currencies }))
+        .catch((error) => this.setState({ error: error.message }));
   }
-
-  fetchCurrencies = async () => {
-    try {
-      const response = await fetch('https://api.frankfurter.app/currencies');
-      const data = await response.json();
-      this.setState({ currencies: Object.keys(data), error: null });
-    } catch (error) {
-      this.setState({ error: error.message });
-    }
-  };
-
-  fetchExchangeRates = async (currency) => {
-    try {
-      const response = await fetch(`https://api.frankfurter.app/latest?from=${currency}`);
-      const data = await response.json();
-      this.setState({ rates: data.rates, error: null });
-    } catch (error) {
-      this.setState({ error: error.message });
-    }
-  };
 
   handleCurrencyChange = (event) => {
     const newCurrency = event.target.value;
     this.setState({ baseCurrency: newCurrency });
     this.fetchExchangeRates(newCurrency);
+  };
+
+  fetchExchangeRates = async (currency) => {
+    try {
+      const response = await fetch(`https://api.frankfurter.dev/v1/latest?base=${currency}&symbols=EUR,GBP,AUD`);
+      const data = await response.json();
+      this.setState({ rates: data.rates, error: null });
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   };
 
   render() {

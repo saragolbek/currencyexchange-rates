@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { fetchCurrencies } from './utils';
 import ChartComponent from './ChartComponent';
 
 class CurrencyConverter extends Component {
@@ -16,29 +17,22 @@ class CurrencyConverter extends Component {
     }
 
     componentDidMount() {
-        this.fetchCurrencies();
+        fetchCurrencies()
+            .then((currencies) => this.setState({ currencies }))
+            .catch((error) => this.setState({ error: error.message }));
     }
-
-    fetchCurrencies = async () => {
-        try {
-            const response = await fetch('https://api.frankfurter.app/currencies');
-            const data = await response.json();
-            this.setState({ currencies: Object.keys(data), error: null });
-        } catch (error) {
-            this.setState({ error: error.message });
-        }
-    };
 
     handleConversion = async () => {
         const { baseCurrency, targetCurrency, amount } = this.state;
         try {
-            const response = await fetch(`https://api.frankfurter.app/latest?from=${baseCurrency}&to=${targetCurrency}`);
+            const response = await fetch(`https://api.frankfurter.dev/v1/latest?base=${baseCurrency}&symbols=${targetCurrency}`);
             const data = await response.json();
             this.setState({
                 convertedAmount: data.rates[targetCurrency] * amount,
-                error: null
+                error: null,
             });
-            this.fetchHistoricalRates(baseCurrency, targetCurrency);
+
+            await this.fetchHistoricalRates(baseCurrency, targetCurrency);
         } catch (error) {
             this.setState({ error: error.message });
         }
@@ -48,7 +42,7 @@ class CurrencyConverter extends Component {
         const endDate = new Date().toISOString().split('T')[0];
         const startDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
         try {
-            const response = await fetch(`https://api.frankfurter.app/${startDate}..${endDate}?from=${base}&to=${target}`);
+            const response = await fetch(`https://api.frankfurter.dev/v1/${startDate}..${endDate}?base=${base}&symbols=${target}`);
             const data = await response.json();
             this.setState({ historicalRates: data.rates, error: null });
         } catch (error) {
