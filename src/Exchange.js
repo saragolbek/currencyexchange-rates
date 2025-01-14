@@ -15,7 +15,7 @@ class Exchange extends Component {
 
   async componentDidMount() {
     try {
-      await this.loadCurrenciesAndRates(); // Await the Promise to handle it explicitly
+      await this.loadCurrenciesAndRates();
     } catch (error) {
       console.error('Error during initial load:', error);
     }
@@ -40,20 +40,12 @@ class Exchange extends Component {
       this.setState({ currencies, rates, error: null });
     } catch (error) {
       this.setState({ error: error.message });
-      throw error; // Re-throw to handle it in componentDidMount if necessary
+      throw error;
     }
   };
 
-  debounce = (func, delay) => {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => func(...args), delay);
-    };
-  };
-
-  handleCurrencyChange = this.debounce(async (event) => {
-    const newCurrency = event.target.value;
+  handleCurrencyChange = async (event) => {
+    const newCurrency = event.target.value; // Get selected currency
     const cacheKey = `rates_${newCurrency}`;
     try {
       let rates = localStorage.getItem(cacheKey);
@@ -67,11 +59,12 @@ class Exchange extends Component {
         rates = JSON.parse(rates);
       }
 
+      // Update the state with the new currency and rates
       this.setState({ baseCurrency: newCurrency, rates });
     } catch (error) {
       this.setState({ error: error.message });
     }
-  }, 300); // Debounce with 300ms delay
+  };
 
   render() {
     const { currencies, baseCurrency, rates, error } = this.state;
@@ -84,8 +77,8 @@ class Exchange extends Component {
               <div className="mb-3">
                 <select
                     className="form-select"
-                    value={baseCurrency}
-                    onChange={this.handleCurrencyChange}
+                    value={baseCurrency} // Tied to state for controlled component
+                    onChange={this.handleCurrencyChange} // Updates state on change
                 >
                   {currencies.map((currency) => (
                       <option key={currency} value={currency}>
