@@ -5,7 +5,7 @@
 
 
 ## Website
-[https://currency-converter-sg.netlify.app/](url)
+https://currencyexchange-rates.netlify.app/ 
 
 ## Overview
 The Currency Exchange App is a dynamic two-page web application that provides real-time currency conversion and historical exchange rate trends. Users can select currencies to view current exchange rates, compare them in a table, and analyze historical data through interactive graphs.
