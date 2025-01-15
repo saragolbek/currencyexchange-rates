@@ -1,8 +1,9 @@
 # Currency Exchange App
 
-<img width="1435" alt="Screenshot 2025-01-07 at 7 08 40 PM" src="https://github.com/user-attachments/assets/fb356580-486a-4a93-bead-06137d5a55b5" />
-<img width="1440" alt="Screenshot 2025-01-07 at 7 08 56 PM" src="https://github.com/user-attachments/assets/7f23b8a1-1a1b-444a-b4ab-a409d70770ca" />
-
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img width="49%" alt="Screenshot 2025-01-07 at 7 08 40 PM" src="https://github.com/user-attachments/assets/fb356580-486a-4a93-bead-06137d5a55b5" />
+  <img width="49%" alt="Screenshot 2025-01-07 at 7 08 56 PM" src="https://github.com/user-attachments/assets/7f23b8a1-1a1b-444a-b4ab-a409d70770ca" />
+</div>
 
 ## Website
 https://currencyexchange-rates.netlify.app/ 
@@ -11,34 +12,71 @@ https://currencyexchange-rates.netlify.app/
 The Currency Exchange App is a dynamic two-page web application that provides real-time currency conversion and historical exchange rate trends. Users can select currencies to view current exchange rates, compare them in a table, and analyze historical data through interactive graphs.
 
 ## Features
-1. Real-Time Exchange Rates:
-  - Compare two currencies and view the current exchange rate on the first page.
-  - Visualize historical exchange rate trends with a dynamic graph.
-2. Comprehensive Currency Comparison:
-  - Select one currency to compare against all available currencies on the second page.
-  - View data in a tabular format alongside a comparative graph.
-3. User-Friendly Interface:
-  - Intuitive navigation with a clean and responsive design for desktop and mobile users.
+The Currency Exchange App offers the following features:
+### Real-Time Currency Exchange
+- Fetches live exchange rates using the Frankfurter API.
+- Supports conversion for a wide range of global currencies.
+### Historical Data Visualization
+- Displays exchange rate trends over time with interactive charts powered by Chart.js.
+- Compare historical rates between two currencies for selected time periods.
+### Dynamic Dropdowns
+- Easily select base and target currencies from a dynamically generated list.
+- The currency list is cached for faster loading.
+### Optimized API Calls
+- Uses caching with localStorage to reduce redundant API requests.
+- Batched requests minimize network latency.
+### Responsive Design
+- Fully responsive interface, ensuring a seamless experience across desktop, tablet, and mobile devices.
+### Scalable Architecture
+- Modular components and utility functions ensure the app can be extended easily.
+- Includes reusable methods for data fetching and error handling.
+### Intuitive User Interface
+- A clean and user-friendly layout.
+- Instant feedback for currency conversions.
 
 ## Technologies Used
-- Front-end: HTML, CSS, React JSX, Javascript
-- Back-end: Frankenfurter API
+### Frontend
+- React: A JavaScript library for building user interfaces, ensuring fast and efficient rendering with a component-based architecture.
+- Chart.js: A powerful charting library used to display historical exchange rate trends.
+- Bootstrap: For responsive design and consistent styling across devices.
+### Backend (API)
+- Frankfurter API: Provides real-time and historical currency exchange rate data.
+### State Management
+- React State: Used for local state handling and managing component-level state.
+### Caching
+- localStorage: Enables caching of frequently used data, such as currency lists and exchange rates, to reduce API calls and improve performance.
+### Development Tools
+- Node.js: JavaScript runtime used for building and running the app locally.
+- Yarn: Dependency management for installing and managing libraries.
+- Webstorm: Recommended code editor for development.
+### Version Control
+- Git: Version control for tracking changes.
+- GitHub: Hosting repository for collaboration and deployment.
+### Deployment
+- Netlify: (Optional) A platform for deploying and hosting the app with ease.
 
-## General Approach
-1. Front-End Development:
-  - Designed a responsive layout using HTML and CSS for an engaging user experience.
-  - Built interactive components in React JS to handle data presentation and user interaction.
-2. API Integration:
-  - Leveraged the Frankfurter API to fetch real-time and historical exchange rate data.
-  - Implemented API calls and mapped the retrieved data to graphs and tables for clear visualization.
-3. Page Development:
-  - Page 1: Users select two currencies to view current exchange rates and a graph of historical trends.
-  - Page 2: Allows users to select one currency to compare its value against all available currencies, displayed in a table and graph format.
-4. Testing and Debugging:
-  - Verified API responses and ensured accurate mapping of data into the application.
-  - Debugged and refined user interface components for seamless interaction.
+## Installation
+To set up the Currency Exchange App locally, follow these steps:
 
-## Further Enhancements
-1. Expanded Currency Support: Currently limited to three currencies; future updates will include additional currencies for broader comparison.
-2. Improved User Analytics: Adding features to track user preferences and provide tailored currency insights.
-3. Enhanced Graphs: Explore advanced visualization libraries for more detailed and customizable graphs.
+### Prerequisites
+Ensure you have the following installed on your machine:
+- Node.js (v14 or higher)
+- yarn package manager
+
+### Steps to Install
+1. Clone the Repository:
+```
+git clone https://github.com/your-username/currency-exchange-app.git
+cd currency-exchange-app
+```
+2. Install Dependencies:
+```
+yarn install
+```
+3. Start the Development Server:
+```
+yarn build
+yarn start
+```
+4. Open your browser and navigate to:
+http://localhost:3000
